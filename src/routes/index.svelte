@@ -1,9 +1,6 @@
-<script context="module">
-  export const prerender = false;
-</script>
-
 <script>
   import { onMount } from 'svelte';
+  import FibWorker from '$lib/fib.worker?worker'
 
   let worker;
   let position = 0;
@@ -28,7 +25,6 @@
   }
 
   onMount(async () => {
-    const { default: FibWorker } = await import('$lib/fib.worker?worker')
     worker = new FibWorker();
   })
 </script>
